@@ -4,14 +4,30 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { LoginForm } from "../pages/login/Login";
 import { Logout } from "../pages/Logout";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./redux/store/ReduxStore";
+import { useEffect } from "react";
+import { setUserLoginStatus } from "./redux/login/LoggedIn";
 
 function NavigationBar() {
   const userLoggedIn = useSelector(
     (state: RootState) => state.loggedIn.isLoggedIn
   );
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    // Check if the user is already logged in (e.g., valid access token present in localStorage or a cookie)
+    const accessToken = localStorage.getItem("accessToken");
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (accessToken && refreshToken) {
+      // You might want to add a check for the token's validity here
+      // For example, you could check if the token is expired or revoked
+      const username = localStorage.getItem("username") || ""; // Get the username if needed
+      dispatch(setUserLoginStatus({ isLoggedIn: true, username: username }));
+      console.log(accessToken);
+    }
+  }, [dispatch]);
   return (
     <Navbar bg="transparent">
       <Container>

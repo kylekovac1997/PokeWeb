@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PokedexApi, PokeBoxProps } from "../services/PokedexApi";
+import { PokedexApi, PokeBoxProps } from "../ApiCalls/PokedexApi";
 import PokeCard from "../componets/PokeCard";
 import {
   ButtonPcLeft,

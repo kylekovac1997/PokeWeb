@@ -31,14 +31,17 @@ export const LoginForm: React.FC = () => {
       [name]: value,
     }));
   };
-
   useEffect(() => {
     if (loginMutation.isSuccess) {
+      const { accessToken, refreshToken } = loginMutation.data.data;
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
       const username = credentials.username;
       navigate(`/UserPage`);
       dispatch(setUserLoginStatus({ isLoggedIn: true, username: username }));
+      console.log(accessToken, refreshToken);
     }
-  }, [loginMutation.isSuccess, credentials.username, navigate]);
+  }, [loginMutation.isSuccess, navigate, credentials.username]);
 
   return (
     <Dialog>

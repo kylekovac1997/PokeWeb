@@ -1,5 +1,6 @@
 const { getUserCollection } = require("../database/mongoDB");
 const bcrypt = require("bcrypt");
+const {generateAccessToken, generateRefreshToken } = require("./AuthToken")
 
 exports.login = async (request, response) => {
   try {
@@ -27,16 +28,19 @@ exports.login = async (request, response) => {
       const passwordMatch = await bcrypt.compare(password, user.password);
 
       if (passwordMatch) {
-        request.session.user = user;
-        response.status(200).json({ message: "User login successful" });
-        console.log(request.session.user);
+       
+        const accessToken = generateAccessToken({username: user.username });
+        const refreshToken = generateRefreshToken({username: user.username});
+        return response.status(200).json({ accessToken, refreshToken })
+        
       } else {
-        response.status(401).json({ error: "Invalid username or password" });
+        return response.status(401).json({ error: "Invalid username or password" });
       }
     } else {
-      response.status(401).json({ error: "Invalid username or password" });
+      return response.status(401).json({ error: "Invalid username or password" });
     }
   } catch (err) {
-    response.status(500).json("Internal Server Error");
+    console.log(err)
+    return response.status(500).json("Internal Server Error");
   }
 };
