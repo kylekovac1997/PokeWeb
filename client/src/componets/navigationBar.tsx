@@ -5,29 +5,36 @@ import { Link } from "react-router-dom";
 import { LoginForm } from "../pages/login/Login";
 import { Logout } from "../pages/Logout";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./redux/store/ReduxStore";
-import { useEffect } from "react";
+import { UserLoggedIn } from "./redux/user/UserLoggedIn";
+import { useEffect, useMemo } from "react";
 import { setUserLoginStatus } from "./redux/login/LoggedIn";
+import { RootState } from "./redux/store/ReduxStore";
 
 function NavigationBar() {
-  const userLoggedIn = useSelector(
-    (state: RootState) => state.loggedIn.isLoggedIn
-  );
   const dispatch = useDispatch();
+  const userLoggedIn = useSelector((state: RootState) => UserLoggedIn(state));
+  const memoizedUserLoggedIn = useMemo(() => userLoggedIn, [userLoggedIn]);
 
   useEffect(() => {
-    // Check if the user is already logged in (e.g., valid access token present in localStorage or a cookie)
     const accessToken = localStorage.getItem("accessToken");
     const refreshToken = localStorage.getItem("refreshToken");
-
-    if (accessToken && refreshToken) {
-      // You might want to add a check for the token's validity here
-      // For example, you could check if the token is expired or revoked
-      const username = localStorage.getItem("username") || ""; // Get the username if needed
-      dispatch(setUserLoginStatus({ isLoggedIn: true, username: username }));
-      console.log(accessToken);
+    if (accessToken && refreshToken && !isLoggedIn) {
+      dispatch(
+        setUserLoginStatus({
+          isLoggedIn: true,
+          username: memoizedUserLoggedIn.username,
+          accessToken: accessToken,
+          refreshToken: memoizedUserLoggedIn.refreshToken,
+        })
+      );
     }
-  }, [dispatch]);
+  }, [
+    dispatch,
+    memoizedUserLoggedIn.accessToken,
+    memoizedUserLoggedIn.refreshToken,
+  ]);
+  const isLoggedIn = memoizedUserLoggedIn.isLoggedIn;
+
   return (
     <Navbar bg="transparent">
       <Container>
@@ -45,13 +52,13 @@ function NavigationBar() {
             PokeBox
           </Nav.Link>
           <Nav.Link href="#pricing">Pricing</Nav.Link>
-          {userLoggedIn && (
+          {isLoggedIn && (
             <Nav.Link as={Link} to="/UserPage">
               UserPage
             </Nav.Link>
           )}
         </Nav>
-        {userLoggedIn ? <Logout /> : <LoginForm />}
+        {isLoggedIn ? <Logout /> : <LoginForm />}
       </Container>
     </Navbar>
   );

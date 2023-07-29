@@ -26,22 +26,28 @@ export const LoginForm: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setCredentials((prevCredentials) => ({
-      ...prevCredentials,
+    setCredentials((credentials) => ({
+      ...credentials,
       [name]: value,
     }));
   };
   useEffect(() => {
     if (loginMutation.isSuccess) {
       const { accessToken, refreshToken } = loginMutation.data.data;
+      const username = credentials.username;
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
-      const username = credentials.username;
       navigate(`/UserPage`);
-      dispatch(setUserLoginStatus({ isLoggedIn: true, username: username }));
-      console.log(accessToken, refreshToken);
+      dispatch(
+        setUserLoginStatus({
+          isLoggedIn: true,
+          username: username,
+          accessToken: accessToken,
+          refreshToken: refreshToken,
+        })
+      );
     }
-  }, [loginMutation.isSuccess, navigate, credentials.username]);
+  }, [loginMutation.isSuccess, navigate]);
 
   return (
     <Dialog>
@@ -61,6 +67,7 @@ export const LoginForm: React.FC = () => {
             name="username"
             value={credentials.username}
             onChange={handleChange}
+            autoComplete="current-username"
           />
         </div>
         <div>
@@ -71,6 +78,7 @@ export const LoginForm: React.FC = () => {
             name="password"
             value={credentials.password}
             onChange={handleChange}
+            autoComplete="current-password"
           />
         </div>
         <button type="submit" disabled={loginMutation.isLoading}>

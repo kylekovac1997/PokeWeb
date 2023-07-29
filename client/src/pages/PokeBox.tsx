@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PokedexApi, PokeBoxProps } from "../ApiCalls/PokedexApi";
+import { PokeBoxProps, PokedexApiCall } from "../ApiCalls/PokedexApi";
 import PokeCard from "../componets/PokeCard";
 import {
   ButtonPcLeft,
@@ -23,7 +23,7 @@ function PokeBox() {
 
   const fetchData = async () => {
     try {
-      const apiData: PokeBoxProps = await PokedexApi(offset);
+      const apiData: PokeBoxProps = await PokedexApiCall(offset);
       setPokeBoxData(apiData);
     } catch (error) {
       console.log(error);
@@ -53,13 +53,19 @@ function PokeBox() {
     <>
       <PcDiv>
         <DisplayDiv>
-          <ButtonPcLeft onClick={handleBackClick}></ButtonPcLeft>
+          <ButtonPcLeft
+            data-testid="button-pc-left"
+            onClick={handleBackClick}
+          ></ButtonPcLeft>
           <PcScreen>
             <h1 style={{ marginLeft: "200px", marginTop: "25px" }}>
               BOX{count}
             </h1>
           </PcScreen>
-          <ButtonPcRight onClick={handleNextClick}></ButtonPcRight>
+          <ButtonPcRight
+            data-testid="button-pc-right"
+            onClick={handleNextClick}
+          ></ButtonPcRight>
         </DisplayDiv>
         <PokemonDiv>
           {pokeBoxData.results.map((pokemon) => (

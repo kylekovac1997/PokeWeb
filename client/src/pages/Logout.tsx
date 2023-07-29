@@ -8,12 +8,18 @@ export const Logout = () => {
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
     try {
       await axios.post("http://localhost:4000/api/logout");
       navigate("/");
-      dispatch(setUserLoginStatus({ isLoggedIn: false, username: "" }));
+      localStorage.clear();
+      dispatch(
+        setUserLoginStatus({
+          isLoggedIn: false,
+          username: "",
+          accessToken: "",
+          refreshToken: "",
+        })
+      );
     } catch (error) {
       console.log(error);
     }

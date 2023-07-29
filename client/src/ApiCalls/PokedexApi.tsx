@@ -1,10 +1,11 @@
 import axios from "axios";
 
 export interface PokeBoxProps {
+  name: string;
   results: { name: string; url: string }[];
 }
 
-export const PokedexApi = async (offset: number): Promise<PokeBoxProps> => {
+export const PokedexApiCall = async (offset: number): Promise<PokeBoxProps> => {
   try {
     const response = await axios.get<PokeBoxProps>(
       `http://localhost:4000/api/Pokedex?offset=${offset}&limit=30`

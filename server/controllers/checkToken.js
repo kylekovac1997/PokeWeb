@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
-const SECRET_KEY = "random-secret-key"; // Define the secret key once
+const SECRET_KEY = "random-secret-key"; 
 
-// ...
+
 
 const verifyToken = (request, response, next) => {
   const authorizationHeader = request.headers.authorization;
@@ -17,10 +17,10 @@ const verifyToken = (request, response, next) => {
       return response.status(403).json({ error: "Invalid access token" });
     }
     
-    // Assuming your payload has a "username" field
+    
     const username = decoded.username;
     
-    // Attach the username to the request object for further use in protected routes
+   
     request.user = {
       ...decoded,
       username: username,

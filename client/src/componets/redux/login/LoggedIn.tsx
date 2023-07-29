@@ -3,11 +3,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface LoggedInState {
   isLoggedIn: boolean;
   username: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
 const initialState: LoggedInState = {
   isLoggedIn: false,
   username: "",
+  accessToken: "",
+  refreshToken: "",
 };
 
 const LoggedInState = createSlice({
