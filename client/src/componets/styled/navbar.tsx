@@ -1,4 +1,0 @@
-const export NavBar =  styled()
-
-
-

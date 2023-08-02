@@ -36,16 +36,23 @@ function NavigationBar() {
   const isLoggedIn = memoizedUserLoggedIn.isLoggedIn;
 
   return (
-    <Navbar bg="transparent">
+    <Navbar
+      style={{
+        backgroundColor: "rgba(200, 200, 200, 1)",
+        width: "100%",
+        height: "100px",
+      }}
+    >
       <Container>
         <Navbar.Brand as={Link} to="/">
           <img
             src="src/images/main/pokemonLogo-removebg-preview.png"
             alt="pokemon-logo"
+            width={"100px"}
           />
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link as={Link} to="/Home">
+          <Nav.Link as={Link} to="/">
             Home
           </Nav.Link>
           <Nav.Link as={Link} to="/Pokebox">

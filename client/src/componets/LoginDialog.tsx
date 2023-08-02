@@ -10,10 +10,11 @@ const DialogLogin = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  border-radius: 50%;
   width: 100px;
   height: 100px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 10px;
   &:hover {
     background-image: url("/src/images/loginPokeBallGif.gif");
     background-size: 155px;
@@ -23,7 +24,7 @@ const DialogLogin = styled.div`
 const DialigChildren = styled.dialog`
   background-color: transparent;
   background-image: url("/src/images/ProfessorOak.png");
-
+  z-index: 1;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -55,7 +56,6 @@ export const Dialog: React.FC<DialogInterface> = ({ children }) => {
             width: "260px",
             height: "260px",
             position: "relative",
-
             marginTop: "80px",
           }}
         >

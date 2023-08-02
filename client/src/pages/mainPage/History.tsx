@@ -9,15 +9,28 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import { StyledCenter } from "../../componets/styled/mainPageStyledComponets/MainScreenStyling";
+import {
+  StyledCenterSmall,
+  StyledCenterSmallImg,
+  StyledCenterSmallBody,
+  StyledCenterSmallText,
+} from "../../componets/styled/mainPageStyledComponets/MainScreenStyling";
 
 function History() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <StyledCenter onClick={onOpen}>
-        History
+      <div onClick={onOpen}>
+        <StyledCenterSmall>
+          <StyledCenterSmallImg
+            variant="bottom"
+            src="src/images/background.gif"
+          />
+          <StyledCenterSmallBody>
+            <StyledCenterSmallText>Pokemon History</StyledCenterSmallText>
+          </StyledCenterSmallBody>
+        </StyledCenterSmall>
         <Modal
           isCentered
           onClose={onClose}
@@ -106,7 +119,7 @@ function History() {
             </ModalFooter>
           </ModalContent>
         </Modal>
-      </StyledCenter>
+      </div>
     </>
   );
 }

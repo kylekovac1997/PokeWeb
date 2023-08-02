@@ -3,7 +3,7 @@ import { useMutation } from "react-query";
 import axios from "axios";
 import { IsErrorResponse, LoginCredentials } from "./loginType";
 import { useNavigate } from "react-router-dom";
-import { Dialog } from "../../componets/Dialog";
+import { Dialog } from "../../componets/LoginDialog";
 import { useDispatch } from "react-redux";
 import { setUserLoginStatus } from "../../componets/redux/login/LoggedIn";
 
