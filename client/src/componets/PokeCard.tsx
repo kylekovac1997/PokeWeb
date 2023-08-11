@@ -7,7 +7,7 @@ import {
   PokemonCardText,
   PokemonCardTitle,
   PokemonCardTitleP,
-} from "./styled/styledPokemonCard";
+} from "./styled/pokebox/styledPokemonCard";
 
 interface SelectedPokemon {
   forms: { name: string }[];

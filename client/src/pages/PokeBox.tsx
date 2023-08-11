@@ -8,7 +8,7 @@ import {
   PcDiv,
   PcScreen,
   PokemonDiv,
-} from "../componets/styled/styledPokemonBox";
+} from "../componets/styled/pokebox/styledPokemonBox";
 import ClickedSound from "../componets/ClickedSound";
 import { PokeBallLoading } from "../componets/Loading";
 

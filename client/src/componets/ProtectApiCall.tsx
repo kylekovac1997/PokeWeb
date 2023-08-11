@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { UserLoggedIn } from "../componets/redux/user/UserLoggedIn";
-import { setUserLoginStatus } from "../componets/redux/login/LoggedIn";
+import { UserLoggedIn } from "./redux/user/UserLoggedIn";
+import { setUserLoginStatus } from "./redux/login/LoggedIn";
 
 function ProtectedApiCall() {
   const dispatch = useDispatch();

@@ -1,23 +1,35 @@
-import { Center } from "@chakra-ui/react";
 import { Card } from "react-bootstrap";
 import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 15px;
   align-content: center;
   background-color: white;
-  max-width: 900px;
-  width: 1200px;
+  max-width: 1000px;
   min-width: 250px;
-  padding: 10px;
+  padding: 5px;
+`;
+
+export const RightSideContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  max-width: 271px;
+`;
+
+export const LeftSideContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  max-width: 620px;
 `;
 
 export const StyledMain = styled(Card)`
   position: relative;
   border-color: transparent;
   margin: 5px;
+  height: 500px;
   max-width: 600px;
   &:hover {
     animation: jump 0.2s;
@@ -42,9 +54,10 @@ export const StyledCenterSmall = styled(Card)`
   display: flex;
   flex-wrap: wrap;
   margin: 5px;
-  max-width: 250px;
+  max-width: 261px;
+  width: 261px;
   max-height: 150px;
-  height: 170px;
+  height: 150px;
   &:hover {
     animation: jump 0.2s;
   }
@@ -87,8 +100,10 @@ export const StyledMedium = styled(Card)`
   position: relative;
   border-color: transparent;
   margin: 5px;
+  width: 259px;
   max-width: 259px;
-  bottom: 270px;
+
+  height: 316px;
   &:hover {
     animation: jump 0.2s;
   }
@@ -111,6 +126,7 @@ export const StyledLarge = styled(Card)`
   border-color: transparent;
   margin: 5px;
   max-width: 295px;
+  width: 295px;
   &:hover {
     animation: jump 0.2s;
   }

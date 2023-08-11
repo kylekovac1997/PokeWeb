@@ -1,15 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+
 #root{
-  background-image: url("./images/appBackground/peakpx.jpg");
+  background-image: url("./images/appBackground/peakpx-modified.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  
-  
-  
+  font-family: "Kanit", sans-serif;
+}
+
+#mainScreen{
+    background-image: url("./images/appBackground/peakpx.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+ 
 }
 

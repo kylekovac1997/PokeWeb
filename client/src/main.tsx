@@ -17,7 +17,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
           <ChakraProvider>
-            <App />
+            <div id="mainScreen">
+              <App />
+            </div>
           </ChakraProvider>
         </Provider>
       </QueryClientProvider>
