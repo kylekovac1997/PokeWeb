@@ -6,14 +6,14 @@ import {
   ContainerStyled,
   NavBarStyled,
   NavStyled,
-} from "./styled/styledSecondNavBar";
+} from "./styled/secondNavBar/styledSecondNavBar";
 
 function SecondNavBar() {
   return (
     <>
       <NavBarStyled>
         <ContainerStyled>
-          <NavStyled styled={{}}>
+          <NavStyled>
             <Nav as={Link} to="/">
               Home
             </Nav>

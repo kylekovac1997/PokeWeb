@@ -7,6 +7,7 @@ import Footer from "./pages/Footer";
 import EventsPages from "./pages/mainPage/pages/EventsPages";
 import CardsPage from "./pages/mainPage/pages/CardsPage";
 import SecondNavBar from "./componets/SecondNavBar";
+import CardInfoPage from "./pages/mainPage/pages/cardPage/CardInfoPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/UserPage" element={<UserPage />} />
         <Route path="/EventsPage" element={<EventsPages />} />
         <Route path="/TradingCardGame" element={<CardsPage />} />
+        <Route path="/:name" element={<CardInfoPage />} />
       </Routes>
       <Footer />
     </>

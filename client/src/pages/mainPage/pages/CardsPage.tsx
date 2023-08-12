@@ -1,57 +1,65 @@
-import { Center, Wrap, WrapItem } from "@chakra-ui/react";
+import { Wrap } from "@chakra-ui/react";
 import { Card } from "react-bootstrap";
+import CardsData from "./CardsData.json";
+import {
+  StyledCardList,
+  StyledCardTextDate,
+  StyledCardTextSeries,
+} from "../../../componets/styled/mainPageStyledComponets/pages/cardPage/CardsPageStyled";
+import { useNavigate } from "react-router-dom";
 
 function CardsPage() {
+  const navigate = useNavigate();
+
+  const handleClick = (name: string) => {
+    navigate(`/${name}`);
+  };
   return (
     <Wrap
       spacing="10px"
       justify="center"
-      w="880px"
+      w="900px"
       style={{ backgroundColor: " #ffffff" }}
     >
-      <Card style={{ width: "850px", marginTop: "10px" }}>
+      <Card
+        style={{
+          width: "850px",
+          marginTop: "25px",
+          border: "none",
+        }}
+      >
         <Card.Img
           variant="top"
           src="src/images/main/pages/latestPokeCards/topDiv.png"
         />
-        <Card.Body style={{ backgroundColor: "#272727" }}>
+        <Card.Body
+          style={{
+            backgroundColor: "#272727",
+            borderBottomLeftRadius: "10px",
+            borderBottomRightRadius: "10px",
+          }}
+        >
           <Card.Text style={{ color: "#ffffff" }}>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Pokémon TCG: Scarlet & Violet-Paldea Evolved
           </Card.Text>
         </Card.Body>
       </Card>
-      <WrapItem>
-        <Center w="250px" h="80px" bg="red.200">
-          Box 1
-        </Center>
-      </WrapItem>
-      <WrapItem>
-        <Center w="250px" h="80px" bg="green.200">
-          Box 2
-        </Center>
-      </WrapItem>
 
-      <WrapItem>
-        <Center w="250px" h="80px" bg="blue.200">
-          Box 3
-        </Center>
-      </WrapItem>
-      <WrapItem>
-        <Center w="250px" h="80px" bg="blackAlpha.500">
-          Box 4
-        </Center>
-      </WrapItem>
-      <WrapItem>
-        <Center w="250px" h="80px" bg="blackAlpha.500">
-          Box 5
-        </Center>
-      </WrapItem>
-      <WrapItem>
-        <Center w="250px" h="80px" bg="blackAlpha.500">
-          Box 6
-        </Center>
-      </WrapItem>
+      {CardsData.map((data, index) => (
+        <StyledCardList key={index} onClick={() => handleClick(data.name)}>
+          <Card.Img variant="top" src={data.divImage} />
+          <Card.Body
+            style={{
+              borderEndStartRadius: "5px",
+              borderEndEndRadius: "5px",
+            }}
+          >
+            <StyledCardTextSeries>Scarlet & Violet Series</StyledCardTextSeries>
+            <StyledCardTextDate>{data.date}</StyledCardTextDate>
+            <h6>{data.name}</h6>
+          </Card.Body>
+        </StyledCardList>
+      ))}
     </Wrap>
   );
 }
