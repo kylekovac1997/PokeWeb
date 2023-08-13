@@ -1,4 +1,5 @@
 import React, { ReactNode, useState } from "react";
+import { Button } from "react-bootstrap";
 import styled from "styled-components";
 
 interface DialogInterface {
@@ -22,19 +23,15 @@ const DialogLogin = styled.div`
 `;
 
 const DialigChildren = styled.dialog`
-  background-color: transparent;
   background-image: url("/src/images/ProfessorOak.png");
-  z-index: 1;
+  z-index: 2;
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background-size: cover;
   border: none;
   margin-top: 600px;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 600px;
-  width: 600px;
+  width: 529px;
+  height: 400px;
 `;
 
 export const Dialog: React.FC<DialogInterface> = ({ children }) => {
@@ -56,13 +53,18 @@ export const Dialog: React.FC<DialogInterface> = ({ children }) => {
             width: "260px",
             height: "260px",
             position: "relative",
-            marginTop: "80px",
           }}
         >
           {children}
         </div>
 
-        <button onClick={closeDialog}>X</button>
+        <Button
+          onClick={closeDialog}
+          variant="secondary"
+          style={{ float: "right", marginTop: "60px" }}
+        >
+          Close
+        </Button>
       </DialigChildren>
     </>
   );

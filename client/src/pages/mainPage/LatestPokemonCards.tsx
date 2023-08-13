@@ -7,7 +7,7 @@ function LatestPokemonCards() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/TradingCardGame");
+    navigate("/Card/Scarlet%20&%20Violet—151");
   };
   return (
     <>

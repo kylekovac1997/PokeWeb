@@ -1,5 +1,4 @@
-import Nav from "react-bootstrap/Nav";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {
   BottomNavColorRow,
@@ -14,25 +13,13 @@ function SecondNavBar() {
       <NavBarStyled>
         <ContainerStyled>
           <NavStyled>
-            <Nav as={Link} to="/">
-              Home
-            </Nav>
+            <NavLink to="/">Home</NavLink>
 
-            <Nav as={Link} to="/Pokebox">
-              PokeBox
-            </Nav>
-            <Nav as={Link} to="/Game">
-              Game
-            </Nav>
-            <Nav as={Link} to="/PokeTV">
-              PokeTV
-            </Nav>
-            <Nav as={Link} to="/News">
-              News
-            </Nav>
-            <Nav as={Link} to="/TradingCardGame">
-              Trading Card Game
-            </Nav>
+            <NavLink to="/Pokebox">PokeBox</NavLink>
+            <NavLink to="/Game">Game</NavLink>
+            <NavLink to="/PokeTV">PokeTV</NavLink>
+            <NavLink to="/News">News</NavLink>
+            <NavLink to="/Card">Trading Card Game</NavLink>
           </NavStyled>
         </ContainerStyled>
       </NavBarStyled>

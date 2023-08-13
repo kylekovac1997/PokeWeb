@@ -1,4 +1,5 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const NavBarStyled = styled(Navbar)`
@@ -16,15 +17,18 @@ export const ContainerStyled = styled(Container)`
 `;
 
 const linkColors = ["red", "orange", " #ffbb00", "green", " #00eeff", "blue"];
-export const NavStyled = styled(Nav)`
+export const NavStyled = styled.nav`
   display: flex;
   justify-content: space-between;
+
   width: 100%;
   margin-bottom: -6px;
   & a {
-    /* border: 1px red solid; */
+    /* border: 1px blue solid; */
     width: 100%;
     height: 90px;
+
+    display: flex;
     justify-content: center;
     align-items: center;
     color: #5c5c5c;

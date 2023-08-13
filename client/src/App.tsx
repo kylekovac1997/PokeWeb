@@ -8,6 +8,9 @@ import EventsPages from "./pages/mainPage/pages/EventsPages";
 import CardsPage from "./pages/mainPage/pages/CardsPage";
 import SecondNavBar from "./componets/SecondNavBar";
 import CardInfoPage from "./pages/mainPage/pages/cardPage/CardInfoPage";
+import PokeTv from "./pages/PokeTv";
+import News from "./pages/news/News";
+import NewsInfoPage from "./pages/news/NewsInfoPage";
 
 function App() {
   return (
@@ -19,8 +22,11 @@ function App() {
         <Route path="/PokeBox" element={<PokeBox />} />
         <Route path="/UserPage" element={<UserPage />} />
         <Route path="/EventsPage" element={<EventsPages />} />
-        <Route path="/TradingCardGame" element={<CardsPage />} />
-        <Route path="/:name" element={<CardInfoPage />} />
+        <Route path="/Card" element={<CardsPage />} />
+        <Route path="/Card/:name" element={<CardInfoPage />} />
+        <Route path="/PokeTv" element={<PokeTv />} />
+        <Route path="/News" element={<News />} />
+        <Route path="/News/:name" element={<NewsInfoPage />} />
       </Routes>
       <Footer />
     </>

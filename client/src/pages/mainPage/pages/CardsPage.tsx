@@ -12,7 +12,7 @@ function CardsPage() {
   const navigate = useNavigate();
 
   const handleClick = (name: string) => {
-    navigate(`/${name}`);
+    navigate(`/Card/${name}`);
   };
   return (
     <Wrap
@@ -23,7 +23,7 @@ function CardsPage() {
     >
       <Card
         style={{
-          width: "850px",
+          maxWidth: "850px",
           marginTop: "25px",
           border: "none",
         }}

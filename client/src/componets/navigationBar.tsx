@@ -52,7 +52,7 @@ function NavigationBar() {
           />
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Nav.Link href="#FORUM">FORUM</Nav.Link>
           {isLoggedIn && (
             <Nav.Link as={Link} to="/UserPage">
               UserPage

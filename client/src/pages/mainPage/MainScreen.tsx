@@ -1,24 +1,23 @@
 import { Card } from "react-bootstrap";
-import MessageBoard from "../../componets/MessageBoard";
 import {
   Container,
   LeftSideContainer,
   RightSideContainer,
   StyledMedium,
-  StyledMain,
 } from "../../componets/styled/mainPageStyledComponets/MainScreenStyling";
 import History from "./History";
-import Test from "./Test";
+
 import Events from "./Events";
 import LatestPokemonCards from "./LatestPokemonCards";
+import LatestNews from "./LatestNews";
 function MainScreen() {
   return (
     <>
       <Container style={{ borderTop: "white solid 20px" }}>
         <LeftSideContainer>
           <Events />
-          <LatestPokemonCards></LatestPokemonCards>
-          <Test />
+          <LatestPokemonCards />
+          <LatestNews />
         </LeftSideContainer>
         <RightSideContainer>
           <br />
