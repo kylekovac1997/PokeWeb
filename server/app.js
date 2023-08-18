@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path')
 const cors = require('cors');
 const {verifyToken} = require("./controllers/checkToken")
 const app = express();
@@ -54,7 +55,11 @@ const limiter = rateLimit({
   message: 'Too many requests, please try again later.',
 });
 
-app.use("/",express.static("public"));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// app.use("/",express.static("public"));
 app.use('/api', AllPokemonApi); // Api to grab pokemon data {gifs, images, names, hp, moves, etc } 
 app.use('/api', loginApi);
 app.use('/api', logoutApi);
