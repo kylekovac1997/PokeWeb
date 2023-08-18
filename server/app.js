@@ -62,8 +62,6 @@ const limiter = rateLimit({
 
 
 app.use("/", express.static("client"));
-app.use("/css", express.static("client/css"));
-app.use("/js", express.static("client/js"));
 
 app.use('/api', AllPokemonApi); // Api to grab pokemon data {gifs, images, names, hp, moves, etc } 
 app.use('/api', loginApi);
