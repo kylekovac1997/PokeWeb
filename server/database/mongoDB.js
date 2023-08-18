@@ -1,5 +1,5 @@
 require("dotenv").config()
-const { MongoClient } = require('mongodb');
+const { MongoClient } = require("mongodb");
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(process.env.MONGO_DATABASE_CONNECTION_STRING ) 
 let userCollection;
