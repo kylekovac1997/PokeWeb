@@ -61,10 +61,7 @@ const limiter = rateLimit({
 
 
 
-app.get('client/assets/index-e81b0c36.js', (req, res) => {
-  res.type('module'); 
-  res.sendFile('client/assets/index-e81b0c36.js');
-});
+
 
 app.use('/api', AllPokemonApi); // Api to grab pokemon data {gifs, images, names, hp, moves, etc } 
 app.use('/api', loginApi);
