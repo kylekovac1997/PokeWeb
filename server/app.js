@@ -60,8 +60,8 @@ app.get('/', (req, res) => {
 
 
 
-app.use("/", express.static("client"));
-// app.use(express.static(path.join(__dirname, "client")));
+// app.use("/", express.static("client"));
+app.use(express.static(path.join(__dirname, "client")));
 app.use('/api', AllPokemonApi); // Api to grab pokemon data {gifs, images, names, hp, moves, etc } 
 app.use('/api', loginApi);
 app.use('/api', logoutApi);
