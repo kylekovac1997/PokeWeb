@@ -33,12 +33,20 @@ function FriendList() {
   const currentUser = useSelector(
     (state: RootState) => state.loggedIn.username
   );
-
+  const accessToken = localStorage.getItem("accessToken");
   useEffect(() => {
     axios
-      .post("http://localhost:4000/api/FriendsList", {
-        currentUser: currentUser,
-      })
+      .post(
+        "http://localhost:4000/api/FriendsList",
+        {
+          currentUser: currentUser,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
       .then((response) => {
         // console.log(response.data);
         setFriends(response.data.friends);
@@ -46,7 +54,7 @@ function FriendList() {
       .catch((error) => {
         console.error("Error fetching friends:", error);
       });
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   return (
     <>

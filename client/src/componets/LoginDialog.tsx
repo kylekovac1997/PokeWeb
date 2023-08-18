@@ -77,7 +77,7 @@ export const Dialog: React.FC<DialogInterface> = ({ children }) => {
           variant="secondary"
           type="button"
           onClick={handleClick}
-          style={{ position: "relative", bottom: "150px", left: "90px" }}
+          style={{ position: "absolute", bottom: "330px", left: "300px" }}
         >
           SignUp
         </Button>

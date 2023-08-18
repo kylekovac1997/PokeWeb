@@ -21,7 +21,7 @@ const ChatApp: React.FC<ChatAppProps> = ({ friend, currentUser }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [fetchedMessages, setFetchedMessages] = useState<Message[]>([]);
-
+  const accessToken = localStorage.getItem("accessToken");
   useEffect(() => {
     setMessages([]);
     setFetchedMessages([]);
@@ -31,11 +31,19 @@ const ChatApp: React.FC<ChatAppProps> = ({ friend, currentUser }) => {
     // console.log("Sending message:", message);
 
     try {
-      await axios.post("http://localhost:4000/api/storeMessage", {
-        sender: currentUser,
-        recipient: friend,
-        message: message,
-      });
+      await axios.post(
+        "http://localhost:4000/api/storeMessage",
+        {
+          sender: currentUser,
+          recipient: friend,
+          message: message,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
 
       // Emit the message to the server via socket
       socket.emit("message", {
@@ -80,6 +88,9 @@ const ChatApp: React.FC<ChatAppProps> = ({ friend, currentUser }) => {
             params: {
               sender: currentUser,
               friend: friend,
+            },
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         );

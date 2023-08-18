@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledChatContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
-  height: 730px;
+  max-height: 700px;
   overflow-y: auto;
   position: relative;
 `;
