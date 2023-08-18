@@ -34,8 +34,7 @@ app.use(
   })
 );
 app.use("/", express.static("client"));
-app.use("/css", express.static("client"));
-app.use("/js", express.static("client"));
+app.set("express.staticBufferAllowed", true)
 app.use(
   express.urlencoded({
     limit: "20mb", // Adjust the limit as needed
