@@ -55,11 +55,18 @@ const limiter = rateLimit({
   message: 'Too many requests, please try again later.',
 });
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-// });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+app.get('/styles.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'styles.css'));
+});
+app.get('/script.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'script.js'));
+});
 
-app.use("/",express.static("public"));
+
+// app.use("/",express.static("public"));
 app.use('/api', AllPokemonApi); // Api to grab pokemon data {gifs, images, names, hp, moves, etc } 
 app.use('/api', loginApi);
 app.use('/api', logoutApi);
