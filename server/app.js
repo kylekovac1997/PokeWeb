@@ -20,6 +20,7 @@ const logoutApi = require("./Routes/logoutApi");
 const signupApi = require("./Routes/signupApi");
 const allUsers = require("./Routes/Users");
 const addUser = require("./Routes/Users");
+const removeFriend = require("./Routes/Users")
 const friend = require("./Routes/Users");
 const storeMessage = require("./Routes/Users")
 const retriveMessage = require("./Routes/Users")
@@ -30,13 +31,13 @@ require("dotenv").config()
 app.use(cors());
 app.use(
   express.json({
-    limit: "20mb", // Adjust the limit as needed
+    limit: "20mb", 
   })
 );
 
 app.use(
   express.urlencoded({
-    limit: "20mb", // Adjust the limit as needed
+    limit: "20mb", 
     extended: true,
   })
 );
@@ -66,11 +67,12 @@ app.use('/api', AllPokemonApi); // Api to grab pokemon data {gifs, images, names
 app.use('/api', loginApi);
 app.use('/api', logoutApi);
 app.use('/api', signupApi);
-app.use('/api', allUsers);
-app.use('/api', addUser);
-app.use('/api', friend);
-app.use('/api', storeMessage);
-app.use('/api', retriveMessage);
+app.use('/api', allUsers, verifyToken);
+app.use('/api', addUser, verifyToken);
+app.use('/api', friend, verifyToken);
+app.use('/api', storeMessage, verifyToken);
+app.use('/api', retriveMessage, verifyToken);
+app.use('/api', removeFriend, verifyToken);
 
 const connectedUsers = {}; // Map usernames to sockets
 
@@ -104,15 +106,15 @@ io.on('connection', (socket) => {
 
 
 app.get("/api/test", verifyToken, (req, res) => {
-  // Get the username from the decoded token
-  const username = req.user.username; // Assuming your payload has a "username" field
+ 
+  const username = req.user.username; 
 
-  // Your logic for the protected route here
+ 
   res.status(200).json({ message: `Protected data for user ${username}` });
 });
 
 app.post("/api/refreshToken", (req, res) => {
-  const refreshToken = req.body.refreshToken; // Get the refresh token from the request body
+  const refreshToken = req.body.refreshToken;
   const SECRET_KEY = "random-secret-key";
   if (!refreshToken) {
     return res.status(400).json({ error: "Refresh token is required" });
@@ -120,8 +122,8 @@ app.post("/api/refreshToken", (req, res) => {
 
   // Verify the refresh token
   try {
-    const decodedRefreshToken = jwt.verify(refreshToken, SECRET_KEY); // Use the same SECRET_KEY as the access token
-    const username = decodedRefreshToken.username; // Assuming your payload has a "username" field
+    const decodedRefreshToken = jwt.verify(refreshToken, SECRET_KEY); 
+    const username = decodedRefreshToken.username; 
 
     // Generate a new access token with the updated payload
     const newAccessToken = jwt.sign({ username: username }, SECRET_KEY, {
