@@ -35,7 +35,14 @@ app.use(
 
 app.use(express.static("public"));
 
-
+app.use(
+  expressSession({
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_DATABASE_CONNECTION_STRING,
+      dbName: "PokemonDB",
+    }),
+    secret: process.env.SECRET_KEY,
+  }))
 
 app.use(
   express.urlencoded({
