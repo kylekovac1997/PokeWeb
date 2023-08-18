@@ -33,8 +33,11 @@ app.use(
     limit: "20mb", // Adjust the limit as needed
   })
 );
-// app.use("/", express.static("client"));
-// app.set("express.staticBufferAllowed", true)
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://pokesite.onrender.com');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 app.use(
   express.urlencoded({
     limit: "20mb", // Adjust the limit as needed

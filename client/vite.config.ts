@@ -12,7 +12,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:4000',}}
+        target: 'http://localhost:3000',}}
   },
   build: {
     chunkSizeWarningLimit: 1000, // Set your desired limit in kBs
