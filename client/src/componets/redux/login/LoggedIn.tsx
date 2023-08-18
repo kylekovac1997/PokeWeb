@@ -1,24 +1,30 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface LoggedInState {
+export interface LoggedInState {
   isLoggedIn: boolean;
   username: string;
   accessToken: string;
   refreshToken: string;
+  description: string;
+  profilePic: string;
+  email: string;
 }
 
-const initialState: LoggedInState = {
+export const initialState: LoggedInState = {
   isLoggedIn: false,
   username: "",
   accessToken: "",
   refreshToken: "",
+  description: "",
+  profilePic: "",
+  email: "",
 };
 
-const LoggedInState = createSlice({
+export const LoggedInState = createSlice({
   name: "LoggedInState",
   initialState,
   reducers: {
-    setUserLoginStatus: (state, action: PayloadAction<LoggedInState>) => {
+    setUserLoginStatus: (_state, action: PayloadAction<LoggedInState>) => {
       return action.payload;
     },
   },

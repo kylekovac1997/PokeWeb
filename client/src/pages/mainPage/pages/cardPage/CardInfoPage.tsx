@@ -1,7 +1,6 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import CardsData from "../CardsData.json";
-import { Wrap, WrapItem } from "@chakra-ui/react";
+import { Wrap } from "@chakra-ui/react";
 import { Card } from "react-bootstrap";
 
 function CardInfoPage() {

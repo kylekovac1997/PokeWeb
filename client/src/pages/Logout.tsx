@@ -18,6 +18,9 @@ export const Logout = () => {
           username: "",
           accessToken: "",
           refreshToken: "",
+          profilePic: "",
+          description: "",
+          email: "",
         })
       );
     } catch (error) {

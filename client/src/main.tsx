@@ -7,7 +7,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
-import store from "./componets/redux/store/ReduxStore.tsx";
+import { store, persistor } from "./componets/redux/store/ReduxStore.tsx";
+import { PersistGate } from "redux-persist/integration/react";
 
 const queryClient = new QueryClient();
 
@@ -16,11 +17,13 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-          <ChakraProvider>
-            <div id="mainScreen">
-              <App />
-            </div>
-          </ChakraProvider>
+          <PersistGate loading={null} persistor={persistor}>
+            <ChakraProvider>
+              <div id="mainScreen">
+                <App />
+              </div>
+            </ChakraProvider>
+          </PersistGate>
         </Provider>
       </QueryClientProvider>
     </BrowserRouter>

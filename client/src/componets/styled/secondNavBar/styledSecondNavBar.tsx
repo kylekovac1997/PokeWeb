@@ -1,5 +1,5 @@
-import { Container, Navbar, Nav } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Container, Navbar } from "react-bootstrap";
+
 import styled from "styled-components";
 
 export const NavBarStyled = styled(Navbar)`

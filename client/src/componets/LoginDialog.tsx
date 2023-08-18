@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 interface DialogInterface {
@@ -36,13 +37,18 @@ const DialigChildren = styled.dialog`
 
 export const Dialog: React.FC<DialogInterface> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const navigate = useNavigate();
   const openDialog = () => {
     setIsOpen(true);
   };
 
   const closeDialog = () => {
     setIsOpen(false);
+  };
+
+  const handleClick = () => {
+    setIsOpen(false);
+    navigate("/SignUp");
   };
   return (
     <>
@@ -64,6 +70,14 @@ export const Dialog: React.FC<DialogInterface> = ({ children }) => {
           style={{ float: "right", marginTop: "60px" }}
         >
           Close
+        </Button>
+        <Button
+          variant="secondary"
+          type="button"
+          onClick={handleClick}
+          style={{ position: "relative", bottom: "150px", left: "90px" }}
+        >
+          SignUp
         </Button>
       </DialigChildren>
     </>

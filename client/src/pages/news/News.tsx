@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Wrap } from "@chakra-ui/react";
 import { Card } from "react-bootstrap";
 import NewsData from "./NewsData.json";

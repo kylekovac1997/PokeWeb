@@ -1,5 +1,4 @@
 import { Wrap } from "@chakra-ui/react";
-import React from "react";
 
 function PokeTv() {
   return (

@@ -1,19 +1,49 @@
 const express = require('express');
+const cors = require('cors');
 const {verifyToken} = require("./controllers/checkToken")
 const app = express();
 const jwt = require("jsonwebtoken");
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:5173", 
+  }
+});
+const fileUpload = require("express-fileupload");
 const port = process.env.PORT || 4000;
 const AllPokemonApi = require('./Routes/PokeBoxApi');
-const loginApi = require("./Routes/LoginApi")
-const logoutApi = require("./Routes/logoutApi")
-const signupApi = require("./Routes/signupApi")
-const cors = require('cors');
+const loginApi = require("./Routes/LoginApi");
+const logoutApi = require("./Routes/logoutApi");
+const signupApi = require("./Routes/signupApi");
+const allUsers = require("./Routes/Users");
+const addUser = require("./Routes/Users");
+const friend = require("./Routes/Users");
+const storeMessage = require("./Routes/Users")
+const retriveMessage = require("./Routes/Users")
 const { connectToMongoDb } = require("./database/mongoDB.js");
 const rateLimit = require('express-rate-limit');
 connectToMongoDb();
 require("dotenv").config()
 app.use(cors());
-app.use(express.json());
+app.use(
+  express.json({
+    limit: "20mb", // Adjust the limit as needed
+  })
+);
+app.use(
+  express.urlencoded({
+    limit: "20mb", // Adjust the limit as needed
+    extended: true,
+  })
+);
+
+app.use(
+  fileUpload({
+    limits: { fileSize: 10 * 1024 * 1024 }, //File size limit: 10 MB
+  })
+);
 
 // Rate limiting configuration
 const limiter = rateLimit({
@@ -22,14 +52,46 @@ const limiter = rateLimit({
   message: 'Too many requests, please try again later.',
 });
 
-// Api to grab pokemon data {gifs, images, names, hp, moves, etc } 
-app.use('/api', AllPokemonApi); 
-// Api that handles login routes
+app.use('/api', AllPokemonApi); // Api to grab pokemon data {gifs, images, names, hp, moves, etc } 
 app.use('/api', loginApi);
-// Api tha handles logout routes
 app.use('/api', logoutApi);
-// Api tha handles signup routes
 app.use('/api', signupApi);
+app.use('/api', allUsers);
+app.use('/api', addUser);
+app.use('/api', friend);
+app.use('/api', storeMessage);
+app.use('/api', retriveMessage);
+
+const connectedUsers = {}; // Map usernames to sockets
+
+io.on('connection', (socket) => {
+  console.log('A user connected');
+
+  socket.on('join', (username) => {
+    connectedUsers[username] = socket.id;
+  });
+
+  socket.on('message', async (data) => {
+    const recipientSocketId = connectedUsers[data.recipient];
+   
+      io.to(recipientSocketId).emit('message', data);
+  
+  });
+  
+
+  socket.on('disconnect', () => {
+    console.log('A user disconnected');
+    
+    const usernameToRemove = Object.keys(connectedUsers).find(
+      (username) => connectedUsers[username] === socket.id
+    );
+    if (usernameToRemove) {
+      delete connectedUsers[usernameToRemove];
+    }
+  });
+});
+
+
 
 app.get("/api/test", verifyToken, (req, res) => {
   // Get the username from the decoded token
@@ -67,5 +129,5 @@ app.post("/api/refreshToken", (req, res) => {
 
 
 
-app.listen(port, () => console.log(`Server running on port http://localhost:${port}`));
- 
+server.listen(port, () => console.log(`Server running on port http://localhost:${port}`));
+

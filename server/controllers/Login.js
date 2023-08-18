@@ -28,10 +28,10 @@ exports.login = async (request, response) => {
       const passwordMatch = await bcrypt.compare(password, user.password);
 
       if (passwordMatch) {
-       
+       const userData = await userCollection.findOne({username:username})
         const accessToken = generateAccessToken({username: user.username });
         const refreshToken = generateRefreshToken({username: user.username});
-        return response.status(200).json({ accessToken, refreshToken })
+        return response.status(200).json({ accessToken, refreshToken, userData  })
         
       } else {
         return response.status(401).json({ error: "Invalid username or password" });

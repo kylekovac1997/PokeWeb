@@ -4,35 +4,19 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { LoginForm } from "../pages/login/Login";
 import { Logout } from "../pages/Logout";
-import { useDispatch, useSelector } from "react-redux";
-import { UserLoggedIn } from "./redux/user/UserLoggedIn";
-import { useEffect, useMemo } from "react";
-import { setUserLoginStatus } from "./redux/login/LoggedIn";
+import { useSelector } from "react-redux";
+
+import { useMemo } from "react";
+
 import { RootState } from "./redux/store/ReduxStore";
+import { Avatar, WrapItem } from "@chakra-ui/react";
+import FriendList from "./FriendsList";
+import AddFriend from "./AddFriend";
 
 function NavigationBar() {
-  const dispatch = useDispatch();
-  const userLoggedIn = useSelector((state: RootState) => UserLoggedIn(state));
-  const memoizedUserLoggedIn = useMemo(() => userLoggedIn, [userLoggedIn]);
+  const userData = useSelector((state: RootState) => state.loggedIn);
+  const memoizedUserLoggedIn = useMemo(() => userData, [userData]);
 
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    const refreshToken = localStorage.getItem("refreshToken");
-    if (accessToken && refreshToken && !isLoggedIn) {
-      dispatch(
-        setUserLoginStatus({
-          isLoggedIn: true,
-          username: memoizedUserLoggedIn.username,
-          accessToken: accessToken,
-          refreshToken: memoizedUserLoggedIn.refreshToken,
-        })
-      );
-    }
-  }, [
-    dispatch,
-    memoizedUserLoggedIn.accessToken,
-    memoizedUserLoggedIn.refreshToken,
-  ]);
   const isLoggedIn = memoizedUserLoggedIn.isLoggedIn;
 
   return (
@@ -51,13 +35,22 @@ function NavigationBar() {
             width={"100px"}
           />
         </Navbar.Brand>
+
+        {isLoggedIn && (
+          <Nav.Link as={Link} to="/UserPage">
+            <WrapItem>
+              <Avatar
+                size="lg"
+                src={userData.profilePic}
+                style={{ border: "2px solid gold" }}
+              />
+            </WrapItem>
+          </Nav.Link>
+        )}
+        <div style={{ margin: "20px" }}>{isLoggedIn && <FriendList />}</div>
+        <div style={{ margin: "20px" }}>{isLoggedIn && <AddFriend />}</div>
         <Nav className="me-auto">
           <Nav.Link href="#FORUM">FORUM</Nav.Link>
-          {isLoggedIn && (
-            <Nav.Link as={Link} to="/UserPage">
-              UserPage
-            </Nav.Link>
-          )}
         </Nav>
         {isLoggedIn ? <Logout /> : <LoginForm />}
       </Container>

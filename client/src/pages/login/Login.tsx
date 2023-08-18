@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Dialog } from "../../componets/LoginDialog";
 import { useDispatch } from "react-redux";
 import { setUserLoginStatus } from "../../componets/redux/login/LoggedIn";
+import { Button } from "react-bootstrap";
 
 export const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -33,7 +34,9 @@ export const LoginForm: React.FC = () => {
   };
   useEffect(() => {
     if (loginMutation.isSuccess) {
-      const { accessToken, refreshToken } = loginMutation.data.data;
+      const { accessToken, refreshToken, userData } = loginMutation.data.data;
+      const { description, profilePic, email } = userData;
+      console.log(loginMutation.data);
       const username = credentials.username;
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
@@ -44,6 +47,9 @@ export const LoginForm: React.FC = () => {
           username: username,
           accessToken: accessToken,
           refreshToken: refreshToken,
+          description: description,
+          profilePic: profilePic,
+          email: email,
         })
       );
     }
@@ -81,9 +87,14 @@ export const LoginForm: React.FC = () => {
             autoComplete="current-password"
           />
         </div>
-        <button type="submit" disabled={loginMutation.isLoading}>
+        <Button
+          variant="secondary"
+          type="submit"
+          disabled={loginMutation.isLoading}
+          style={{ position: "relative", top: "14px" }}
+        >
           {loginMutation.isLoading ? "Logging in..." : "Login"}
-        </button>
+        </Button>
       </form>
     </Dialog>
   );

@@ -1,10 +1,10 @@
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { UserLoggedIn } from "./redux/user/UserLoggedIn";
-import { setUserLoginStatus } from "./redux/login/LoggedIn";
+// import { setUserLoginStatus } from "./redux/login/LoggedIn";
 
 function ProtectedApiCall() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const userLoggedIn = useSelector(UserLoggedIn);
 
   async function ProtectedApi() {
@@ -32,9 +32,9 @@ function ProtectedApiCall() {
 
           // Update the access token in local storage
           const newAccessToken = refreshResponse.data.accessToken;
-          dispatch(
-            setUserLoginStatus({ ...userLoggedIn, accessToken: newAccessToken })
-          );
+          // dispatch(
+          //   setUserLoginStatus({ ...userLoggedIn, accessToken: newAccessToken })
+          // );
           // Retry the protected API call with the new access token
           const newResponse = await axios.get(
             "http://localhost:4000/api/test",

@@ -1,4 +1,3 @@
-import React from "react";
 import { StyledFooterTop } from "../componets/styled/footer/FooterStyling";
 
 const Footer = () => {

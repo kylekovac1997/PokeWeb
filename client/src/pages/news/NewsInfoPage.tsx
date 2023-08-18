@@ -52,6 +52,7 @@ function NewsInfoPage() {
                   ) : data.title ? (
                     <>
                       <h2>{data.title}</h2>
+                      {/* @ts-ignore */}
                       {data.image && <img src={data.image} alt={data.title} />}
                       <p>{data.description}</p>
                     </>

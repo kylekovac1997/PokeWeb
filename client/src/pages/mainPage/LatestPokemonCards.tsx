@@ -1,4 +1,3 @@
-import React from "react";
 import { Card } from "react-bootstrap";
 import { StyledLarge } from "../../componets/styled/mainPageStyledComponets/MainScreenStyling";
 import { useNavigate } from "react-router-dom";
