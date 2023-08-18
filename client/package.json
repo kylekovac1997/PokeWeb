@@ -20,6 +20,7 @@
     "@types/styled-components": "^5.1.26",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
+    "express-fileupload": "^1.4.0",
     "framer-motion": "^10.15.0",
     "gsap": "^3.12.2",
     "jsonwebtoken": "^9.0.1",
