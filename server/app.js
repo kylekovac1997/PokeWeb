@@ -59,7 +59,9 @@ const limiter = rateLimit({
 //   res.sendFile(path.join(__dirname, 'public'));
 // });
 
-
+express.static.mime.define({
+  'application/javascript': ['js']
+});
 
 app.use("/", express.static("client"));
 
