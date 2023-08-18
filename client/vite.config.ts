@@ -16,7 +16,7 @@ export default defineConfig({
   },
   build: {
     chunkSizeWarningLimit: 1000, // Set your desired limit in kBs
-    outDir: '/home/kyle/Desktop/PP/server/public',
+    outDir: '/home/kyle/Desktop/PP/server/client',
     emptyOutDir: true,
     
   },
