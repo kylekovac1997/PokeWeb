@@ -34,7 +34,9 @@ app.use(
 );
 
 app.use("/",express.static("public"));
-
+app.get("/", (req, res) => {
+  res.status(200).send("Server is up and running");
+});
 
 app.use(
   express.urlencoded({
