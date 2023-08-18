@@ -1,9 +1,9 @@
 const axios = require('axios');
 
-exports.getPokemon =  (req, res) => {
+exports.getPokemon = async (req, res) => {
   try {
     const { offset} = req.query;
-    const response =  axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=30`);
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=30`);
     const posts = response.data;
     
     res.json(posts);

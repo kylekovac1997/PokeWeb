@@ -9,11 +9,11 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000", 
+    origin: "http://localhost:5132", 
   }
 });
 const fileUpload = require("express-fileupload");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const AllPokemonApi = require('./Routes/PokeBoxApi');
 const loginApi = require("./Routes/LoginApi");
 const logoutApi = require("./Routes/logoutApi");
@@ -33,11 +33,7 @@ app.use(
     limit: "20mb", // Adjust the limit as needed
   })
 );
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://pokesite.onrender.com');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+
 app.use(
   express.urlencoded({
     limit: "20mb", // Adjust the limit as needed
@@ -58,14 +54,14 @@ const limiter = rateLimit({
   message: 'Too many requests, please try again later.',
 });
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public'));
-// });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public'));
+});
 
 
 
-
-app.use(express.static(path.join(__dirname, "client")));
+app.use("/", express.static("client"));
+// app.use(express.static(path.join(__dirname, "client")));
 app.use('/api', AllPokemonApi); // Api to grab pokemon data {gifs, images, names, hp, moves, etc } 
 app.use('/api', loginApi);
 app.use('/api', logoutApi);
