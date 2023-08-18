@@ -33,10 +33,6 @@ app.use(
   })
 );
 
-app.use("/",express.static("public"));
-app.get("/", (req, res) => {
-  res.status(200).send("Server is up and running");
-});
 
 app.use(
   express.urlencoded({
@@ -58,6 +54,7 @@ const limiter = rateLimit({
   message: 'Too many requests, please try again later.',
 });
 
+app.use("/",express.static("public"));
 app.use('/api', AllPokemonApi); // Api to grab pokemon data {gifs, images, names, hp, moves, etc } 
 app.use('/api', loginApi);
 app.use('/api', logoutApi);
