@@ -33,7 +33,7 @@ app.use(
     limit: "20mb", // Adjust the limit as needed
   })
 );
-
+app.use("/", express.static("client"));
 
 app.use(
   express.urlencoded({
@@ -59,11 +59,8 @@ const limiter = rateLimit({
 //   res.sendFile(path.join(__dirname, 'public'));
 // });
 
-express.static.mime.define({
-  'application/javascript': ['js']
-});
 
-app.use("/", express.static("client"));
+
 
 app.use('/api', AllPokemonApi); // Api to grab pokemon data {gifs, images, names, hp, moves, etc } 
 app.use('/api', loginApi);
