@@ -33,8 +33,8 @@ app.use(
     limit: "20mb", // Adjust the limit as needed
   })
 );
-app.use("/", express.static("client"));
-app.set("express.staticBufferAllowed", true)
+// app.use("/", express.static("client"));
+// app.set("express.staticBufferAllowed", true)
 app.use(
   express.urlencoded({
     limit: "20mb", // Adjust the limit as needed
@@ -62,7 +62,7 @@ const limiter = rateLimit({
 
 
 
-
+app.use(express.static(path.join(__dirname, "client")));
 app.use('/api', AllPokemonApi); // Api to grab pokemon data {gifs, images, names, hp, moves, etc } 
 app.use('/api', loginApi);
 app.use('/api', logoutApi);
