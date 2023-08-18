@@ -9,11 +9,11 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:4000", 
+    origin: "http://localhost:3000", 
   }
 });
 const fileUpload = require("express-fileupload");
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 const AllPokemonApi = require('./Routes/PokeBoxApi');
 const loginApi = require("./Routes/LoginApi");
 const logoutApi = require("./Routes/logoutApi");
