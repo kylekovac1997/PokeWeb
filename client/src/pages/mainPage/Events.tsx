@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 import { StyledMain } from "../../componets/styled/mainPageStyledComponets/MainScreenStyling";
 import { useNavigate } from "react-router-dom";
+import worldChampionBackgroundImg from "../../images/main/events/WorldChampBackground.jpeg";
 function Events() {
   const navigate = useNavigate();
 
@@ -10,10 +11,7 @@ function Events() {
 
   return (
     <StyledMain onClick={handleClick}>
-      <Card.Img
-        variant="top"
-        src="src/images/main/events/WorldChampBackground.jpeg"
-      />
+      <Card.Img variant="top" src={worldChampionBackgroundImg} />
       <Card.Body
         style={{
           backgroundColor: "#8f8f8f",

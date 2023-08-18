@@ -6,9 +6,12 @@ import playerData from "../../../../../pages/mainPage/pages/playerData.json";
 export const PageBackgroundImage = styled.div`
   background-image: url("src/images/main/pages/eventsPage/backgroundImage.png");
 `;
+import pokeTournHeader from "../../../../../images/main/pages/eventsPage/pokemontournament-header.jpg";
+import pikachu from "../../../../../images/main/pages/eventsPage/pikachu.png";
+import title from "../../../../../images/main/pages/eventsPage/title.png";
 // START events Header styling ------------------------------------
 const HeaderStyle = styled.div`
-  background-image: url("src/images/main/pages/eventsPage/pokemontournament-header.jpg");
+  background-image: url("${pokeTournHeader}");
   text-align: center;
   background-repeat: repeat-x;
   background-size: cover;
@@ -49,7 +52,7 @@ const PikachuAnimation = styled.div`
   width: auto;
   height: 100%;
   /* border: red 1px solid; */
-  background-image: url("src/images/main/pages/eventsPage/pikachu.png");
+  background-image: url("${pikachu}");
   background-size: contain;
   background-repeat: no-repeat;
   position: relative;
@@ -67,7 +70,7 @@ export const Header = ({ children }: { children: ReactNode }) => {
 
 // START events Title styling ------------------------------------
 const TitleStyle = styled.div`
-  background-image: url("src/images/main/pages/eventsPage/title.png");
+  background-image: url("${title}");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

@@ -15,6 +15,7 @@ import {
   StyledCenterSmallBody,
   StyledCenterSmallText,
 } from "../../componets/styled/mainPageStyledComponets/MainScreenStyling";
+import backgroundImage from "../background.gif";
 
 function History() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -23,10 +24,7 @@ function History() {
     <>
       <div onClick={onOpen}>
         <StyledCenterSmall>
-          <StyledCenterSmallImg
-            variant="bottom"
-            src="src/images/background.gif"
-          />
+          <StyledCenterSmallImg variant="bottom" src={backgroundImage} />
           <StyledCenterSmallBody>
             <StyledCenterSmallText>Pokemon History</StyledCenterSmallText>
           </StyledCenterSmallBody>

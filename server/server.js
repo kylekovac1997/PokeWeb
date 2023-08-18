@@ -32,6 +32,11 @@ app.use(
     limit: "20mb", // Adjust the limit as needed
   })
 );
+
+app.use(express.static("public"));
+
+
+
 app.use(
   express.urlencoded({
     limit: "20mb", // Adjust the limit as needed

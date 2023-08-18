@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import appBackground from "../../../images/appBackground/peakpx-modified.jpg";
 
 export const NewsImage = styled.div`
-  background-image: url("/src/images/appBackground/peakpx-modified.jpg");
+  background-image: url("${appBackground}");
   margin-top: 20px;
   width: 100%;
   height: 335px;

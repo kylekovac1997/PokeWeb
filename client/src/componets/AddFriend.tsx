@@ -41,8 +41,8 @@ function AddFriend() {
           "http://localhost:4000/api/AllUsers"
         );
 
-        console.log("Friend Data:", friendsResponse.data);
-        console.log("All Users Data:", allUsersResponse.data);
+        // console.log("Friend Data:", friendsResponse.data);
+        // console.log("All Users Data:", allUsersResponse.data);
 
         const friendData = friendsResponse.data.friends;
         const updatedUsers = allUsersResponse.data.map((user: Users) => ({

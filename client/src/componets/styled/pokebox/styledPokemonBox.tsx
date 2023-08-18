@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import pokeArrow from "../../../images/pcBackground/PokemonArrow-removebg-preview.png";
+import pcBackground from "../../../images/pcBackground/13.png";
 
 export const ButtonPcLeft = styled.button`
-  background-image: url("src/images/pcBackground/PokemonArrow-removebg-preview.png");
+  background-image: url("${pokeArrow}");
   background-color: #000000c3;
   transform: rotate(270deg);
   background-position: center;
@@ -16,7 +18,7 @@ export const ButtonPcLeft = styled.button`
 `;
 
 export const ButtonPcRight = styled.button`
-  background-image: url("src/images/pcBackground/PokemonArrow-removebg-preview.png");
+  background-image: url("${pokeArrow}");
   background-color: #000000c3;
   transform: rotate(90deg);
   background-position: center;
@@ -31,7 +33,7 @@ export const ButtonPcRight = styled.button`
 `;
 
 export const PcScreen = styled.div`
-  background-image: url("src/images/pcBackground/13.png");
+  background-image: url("${pcBackground}");
   background-size: 100% 100%;
   width: 583px;
   height: 100px;
@@ -46,7 +48,7 @@ export const PcDiv = styled.div`
   max-width: 1000px;
   margin: auto;
   margin-top: 120px;
-  background-image: url("src/images/pcBackground/13.png");
+  background-image: url("${pcBackground}");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   row-gap: 10px;

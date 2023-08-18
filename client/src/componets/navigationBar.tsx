@@ -12,7 +12,7 @@ import { RootState } from "./redux/store/ReduxStore";
 import { Avatar, WrapItem } from "@chakra-ui/react";
 import FriendList from "./FriendsList";
 import AddFriend from "./AddFriend";
-
+import pokemonLogo from "../images/main/pokemonLogo-removebg-preview.png";
 function NavigationBar() {
   const userData = useSelector((state: RootState) => state.loggedIn);
   const memoizedUserLoggedIn = useMemo(() => userData, [userData]);
@@ -29,11 +29,7 @@ function NavigationBar() {
     >
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img
-            src="src/images/main/pokemonLogo-removebg-preview.png"
-            alt="pokemon-logo"
-            width={"100px"}
-          />
+          <img src={pokemonLogo} alt="pokemon-logo" width={"100px"} />
         </Navbar.Brand>
 
         {isLoggedIn && (

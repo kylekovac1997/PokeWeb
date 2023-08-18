@@ -7,7 +7,7 @@ import {
   StyledCardTextSeries,
 } from "../../../componets/styled/mainPageStyledComponets/pages/cardPage/CardsPageStyled";
 import { useNavigate } from "react-router-dom";
-
+import pokeCardsTopDivImg from "../../../images/main/pages/latestPokeCards/topDiv.png";
 function CardsPage() {
   const navigate = useNavigate();
 
@@ -28,10 +28,7 @@ function CardsPage() {
           border: "none",
         }}
       >
-        <Card.Img
-          variant="top"
-          src="src/images/main/pages/latestPokeCards/topDiv.png"
-        />
+        <Card.Img variant="top" src={pokeCardsTopDivImg} />
         <Card.Body
           style={{
             backgroundColor: "#272727",

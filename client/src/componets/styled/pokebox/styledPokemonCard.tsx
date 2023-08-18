@@ -1,5 +1,35 @@
 import { Card } from "react-bootstrap";
 import styled from "styled-components";
+import fireTypeCard from "../../../images/card/fireTypeCard.png";
+import defaultTypeCard from "../../../images/card/defaultTypeCard.png";
+import dragonTypeCard from "../../../images/card/dragonTypeCard.png";
+import electricTypeCard from "../../../images/card/electricTypeCard.png";
+import fightingTypeCard from "../../../images/card/fightingTypeCard.png";
+import grassTypeCard from "../../../images/card/grassTypeCard.png";
+import psychicTypeCard from "../../../images/card/psychicTypeCard.png";
+import waterTypeCard from "../../../images/card/waterTypeCard.png";
+
+const getImagePath = (type: any) => {
+  switch (type) {
+    case "fire":
+      return fireTypeCard;
+    case "water":
+      return waterTypeCard;
+    case "electric":
+      return electricTypeCard;
+    case "fighting":
+      return fightingTypeCard;
+    case "grass":
+      return grassTypeCard;
+    case "phychic":
+      return psychicTypeCard;
+    case "dragon":
+      return dragonTypeCard;
+
+    default:
+      return defaultTypeCard;
+  }
+};
 
 export const PokemonCardImage = styled(Card.Img)`
   position: absolute;
@@ -64,7 +94,7 @@ export const PokemonCardStyle = styled(Card)`
 
   &:hover {
     background-image: ${({ pokemonType }) =>
-      `url(src/images/card/${pokemonType}TypeCard.png)`};
+      `url(${getImagePath(pokemonType)})`};
     ${PokemonCardTitle},
     ${PokemonCardTitleP},
     ${PokemonCardText} {

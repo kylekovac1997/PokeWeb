@@ -11,6 +11,7 @@ import Events from "./Events";
 import LatestPokemonCards from "./LatestPokemonCards";
 import LatestNews from "./LatestNews";
 import MewTwo from "./MewTwo";
+import backGroundGif from "../background.gif";
 function MainScreen() {
   return (
     <>
@@ -23,7 +24,7 @@ function MainScreen() {
         <RightSideContainer>
           <LatestNews />
           <StyledMedium>
-            <Card.Img variant="top" src="src/images/background.gif" />
+            <Card.Img variant="top" src={backGroundGif} />
             <Card.Body
               style={{
                 backgroundColor: "#0796ad",

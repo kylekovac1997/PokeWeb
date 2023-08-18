@@ -9,7 +9,7 @@ import {
   StyledInput,
 } from "../../componets/styled/SignUpPage";
 import { useNavigate } from "react-router-dom";
-
+import professorOak from "../ProfessorOak.png";
 const Signup = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [signupCredentials, setSignupCredentials] = useState({
@@ -78,7 +78,7 @@ const Signup = () => {
       h="700px"
       style={{
         display: "flex",
-        backgroundImage: "url('/src/images/ProfessorOak.png')",
+        backgroundImage: `${professorOak}`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}

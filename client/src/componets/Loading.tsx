@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
-
+import loadingPokeBallGif from "../images/PokeballLoading.gif";
 interface LoadingProps {
   children: ReactNode;
 }
 
 const BallAnimation = styled.div`
-  background-image: url("/src/images/PokeballLoading.gif");
+  background-image: url("${loadingPokeBallGif}");
   background-repeat: no-repeat;
   background-position: center;
   width: 90px;

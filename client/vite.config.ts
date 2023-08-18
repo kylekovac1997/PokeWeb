@@ -14,4 +14,10 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:4000',}}
   },
+  build: {
+    chunkSizeWarningLimit: 1000, // Set your desired limit in kBs
+    outDir: '/home/kyle/Desktop/PP/server/public',
+    emptyOutDir: true,
+    
+  },
 })

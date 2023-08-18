@@ -2,13 +2,15 @@ import React, { ReactNode, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+import loginPokeBall from "../images/loginPokeBall.png";
+import loginPokeBallGif from "../images/loginPokeBallGif.gif";
+import professorOak from "../images/ProfessorOak.png";
 interface DialogInterface {
   children: ReactNode;
 }
 
 const DialogLogin = styled.div`
-  background-image: url("/src/images/loginPokeBall.png");
+  background-image: url("${loginPokeBall}");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -18,13 +20,13 @@ const DialogLogin = styled.div`
   margin: auto;
   margin-top: 10px;
   &:hover {
-    background-image: url("/src/images/loginPokeBallGif.gif");
+    background-image: url("${loginPokeBallGif}");
     background-size: 155px;
   }
 `;
 
 const DialigChildren = styled.dialog`
-  background-image: url("/src/images/ProfessorOak.png");
+  background-image: url("${professorOak}");
   z-index: 2;
   background-repeat: no-repeat;
   background-size: cover;
