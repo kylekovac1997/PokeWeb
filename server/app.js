@@ -55,9 +55,9 @@ const limiter = rateLimit({
   message: 'Too many requests, please try again later.',
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public'));
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public'));
+// });
 
 
 
