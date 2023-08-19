@@ -141,5 +141,5 @@ app.post("/api/refreshToken", (req, res) => {
 
 
 
-server.listen(port, () => console.log(`Server running on port http://localhost:${port}`));
+server.listen(port, () => console.log(`Server running on port ${port}`));
 
